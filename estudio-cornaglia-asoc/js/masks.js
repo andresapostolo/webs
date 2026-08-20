@@ -8,13 +8,14 @@ FX.masks=function(){
     while(el.firstChild)s.appendChild(el.firstChild);
     el.appendChild(s);el.classList.add('mask');
   });
+  const HERO='.hero--pen,[data-hero]';
   FX.pageIn=function(){
-    const h=document.querySelectorAll('[data-hero] .mask__in');
+    const h=document.querySelectorAll('.hero--pen .mask__in,[data-hero] .mask__in');
     if(!h.length||rd)return;
     gsap.fromTo(h,{yPercent:105},{yPercent:0,duration:.45,stagger:.045,ease:'power3.out'});
   };
   document.querySelectorAll('.mask').forEach(el=>{
-    if(el.closest('[data-hero]')||rd)return;
+    if(el.closest(HERO)||rd)return;
     gsap.fromTo(el.querySelector('.mask__in'),{yPercent:110},{yPercent:0,duration:.8,ease:'power4.out',
       scrollTrigger:{trigger:el,start:'top 88%'}});
   });
