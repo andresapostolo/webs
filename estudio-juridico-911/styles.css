@@ -1,0 +1,340 @@
+/* ============================================================
+   ESTUDIO JURÍDICO 911 — CABA y GBA
+   Familia base: `urgencia-c` ("Previsional Multi-sede") con reemplazo
+   quirúrgico del acento azul por el dorado real del lead (#E1B34E).
+   Estructura, tipografía y firmas visuales de la familia: intactas.
+   Entrega 1: header + hero.  Entrega 2: secciones 3 a 8 + footer.
+   ============================================================ */
+:root{
+--bg-100:#F5F7FA;   /* gris muy claro, fondo principal */
+--bg-200:#FFFFFF;   /* blanco, fondo de cards */
+--ink-900:#101C2C;  /* texto oscuro neutro */
+--navy-900:#4A3814; /* bronce muy oscuro — fondos con tinte de marca */
+--brand-700:#7A5F22;/* dorado oscuro — CTA de cierre / hover fuerte / texto de acento sobre claro */
+--brand-500:#E1B34E;/* dorado principal — color real de marca del lead */
+--brand-300:#F0DBA0;/* dorado claro — detalles, badges, texto de acento sobre oscuro */
+--white-100:#FFFFFF;
+--wa:#25D366;--wa-dark:#1DAF57;  /* verde WhatsApp estándar — decisión propia de la familia, no se toca */
+--font-body:"Archivo",system-ui,sans-serif;
+--font-display:"Oswald",Impact,sans-serif;
+--title-l:clamp(2rem,4.4vw,3.6rem);--title-m:clamp(1.7rem,3.2vw,2.7rem);
+--body-xl:clamp(1.15rem,1.8vw,1.5rem);--body-l:clamp(1.02rem,1.35vw,1.2rem);
+--body-m:1rem;--body-s:.875rem;--body-xs:.72rem;
+--gut:clamp(1.15rem,4vw,4.5rem);--gap-6-8:clamp(1.5rem,2.5vw,2.5rem);--py-30-45:clamp(4.2rem,8vw,9rem);
+--line:rgba(16,28,44,.14);--line-w:rgba(255,255,255,.2);--hdr-h:clamp(62px,7.2vw,92px);
+--sh-soft:0 26px 60px -22px rgba(74,56,20,.42),0 8px 18px -12px rgba(74,56,20,.24);
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg-100);color:var(--ink-900);font-family:var(--font-body);font-size:var(--body-m);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--brand-700)}
+.hero a:hover,.menu a:hover,.sec--dark a:hover,.footer a:hover{color:var(--brand-300)}
+h1,h2,h3,h4,.display{font-family:var(--font-display);font-weight:500;letter-spacing:.005em;line-height:1.08;text-transform:uppercase}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.vh{position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap}
+::selection{background:var(--brand-500);color:var(--ink-900)}
+:focus-visible{outline:2px solid var(--brand-500);outline-offset:3px}
+[id]{scroll-margin-top:calc(var(--hdr-h) + 1rem)}
+.skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--brand-500);color:var(--ink-900);padding:.8em 1.2em;font-weight:600}
+.skip:focus{left:var(--gut)}
+
+/* kicker editorial — sobre claro va el dorado oscuro (el #E1B34E no llega a contraste sobre blanco) */
+.tag{font-family:var(--font-body);font-size:var(--body-xs);text-transform:uppercase;letter-spacing:.24em;color:var(--brand-700);font-weight:600}
+.hero .tag,.menu .tag,.sec--dark .tag,.footer .tag{color:var(--brand-300)}
+
+/* ============================================================
+   1. HEADER FIJO + hide-on-scroll (vuelve al menor gesto hacia arriba)
+   ============================================================ */
+.hdrbar{position:fixed;top:0;left:0;right:0;height:var(--hdr-h);background:var(--bg-200);box-shadow:0 1px 0 var(--line);z-index:70;transition:opacity .3s}
+body.menu-open .hdrbar{opacity:0}
+.hdrbar,.brand,.burger{transition:transform .26s ease-in-out,opacity .26s ease-in-out,visibility .26s}
+body.hdr-hidden .hdrbar,body.hdr-hidden .brand,body.hdr-hidden .burger{transform:translateY(calc(var(--hdr-h) * -1.25));opacity:0;pointer-events:none}
+body.menu-open.hdr-hidden .burger{transform:none;opacity:1;pointer-events:auto}
+
+/* --- marca ---------------------------------------------------
+   PENDIENTE: el archivo original del logo (insignia circular dorada
+   "ESTUDIO 911 JURÍDICO") todavía no se recibió. Este bloque es un
+   lockup tipográfico provisorio, NO una recreación del logo.
+   Al recibirlo: guardar en assets/logo.<ext> y reemplazar el markup
+   de .brand por <img class="brand__c"> + versión blanca .brand__w.
+   ------------------------------------------------------------- */
+.brand{position:fixed;top:0;left:var(--gut);height:var(--hdr-h);z-index:76;display:flex;align-items:center;gap:.6rem;color:var(--ink-900)!important}
+.brand:hover{opacity:.82}
+.brand__n{display:flex;flex-direction:column;line-height:1.25;padding-left:.6rem;border-left:1px solid var(--line)}
+.brand__k{font-family:var(--font-body);font-size:.58rem;text-transform:uppercase;letter-spacing:.26em;font-weight:600;color:var(--brand-700)}
+.brand__w{font-family:var(--font-display);font-weight:600;font-size:clamp(1.7rem,3vw,2.4rem);letter-spacing:.01em;line-height:1;color:var(--brand-700)}
+body.menu-open .brand{color:var(--white-100)!important}
+body.menu-open .brand__n{border-left-color:var(--line-w)}
+body.menu-open .brand__k,body.menu-open .brand__w{color:var(--brand-500)}
+
+/* hamburguesa: los 6 ítems de navegación viven todos acá dentro */
+.burger{position:fixed;top:calc((var(--hdr-h) - 46px)/2);right:calc(var(--gut) - .4rem);z-index:77;width:46px;height:46px}
+.burger span{position:absolute;height:2px;width:26px;left:10px;background:var(--brand-700);transition:transform .25s,opacity .2s,background .3s}
+.burger .b1{top:15px}.burger .b2{top:22px}.burger .b3{top:29px}
+.burger.open .b1{transform:translateY(7px) rotate(45deg)}
+.burger.open .b2{opacity:0}
+.burger.open .b3{transform:translateY(-7px) rotate(-45deg)}
+body.menu-open .burger span{background:var(--brand-500)}
+
+/* --- overlay de menú a pantalla completa --- */
+.menu{position:fixed;inset:0;height:100dvh;background:var(--navy-900);color:var(--white-100);z-index:72;overflow-y:auto;transform:translateY(-100%);visibility:hidden;transition:transform .5s cubic-bezier(.5,0,.2,1),visibility .5s}
+body.menu-open .menu{transform:none;visibility:visible}
+.menu__in{min-height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:var(--gap-6-8);padding:calc(var(--gut) + 4.5rem) var(--gut) var(--gut)}
+.menu__main{display:flex;flex-direction:column;align-items:flex-start;gap:.14em}
+.menu__l{font-family:var(--font-display);font-weight:500;font-size:clamp(1.35rem,4vw,2.9rem);line-height:1.12;letter-spacing:.01em;text-transform:uppercase;opacity:.92;transition:opacity .3s,color .3s}
+.menu__l:hover{opacity:1;color:var(--brand-500)}
+.menu__sub h2{font-family:var(--font-body);font-size:var(--body-xs);letter-spacing:.24em;text-transform:uppercase;color:var(--brand-300);margin-bottom:1rem;font-weight:600}
+.menu__srv{display:flex;flex-wrap:wrap;gap:.8rem}
+.menu__c{display:inline-flex;align-items:center;gap:.6em;padding:.75em 1.4em;font-size:var(--body-s);letter-spacing:.12em;text-transform:uppercase;font-weight:600;box-shadow:inset 0 0 0 1px var(--line-w);transition:background .3s,color .3s,box-shadow .3s}
+.menu__c:hover{background:var(--brand-500);color:var(--ink-900)!important;box-shadow:inset 0 0 0 1px var(--brand-500)}
+.menu__c--wa:hover{background:var(--wa);color:var(--white-100)!important;box-shadow:inset 0 0 0 1px var(--wa)}
+.menu__foot{display:flex;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap;border-top:1px solid var(--line-w);padding-top:1.1rem;font-size:var(--body-s);opacity:.7}
+
+/* ============================================================
+   2. BOTONES — relleno deslizante (efecto universal de la familia)
+   ============================================================ */
+.btn{position:relative;display:inline-block;overflow:hidden;background:var(--brand-500);color:var(--ink-900)!important;padding:1.05em 2.2em;font-size:var(--body-s);letter-spacing:.14em;text-transform:uppercase;font-weight:600;min-height:44px;transition:box-shadow .35s,transform .2s}
+.btn__f{position:absolute;inset:0;background:var(--brand-700);transform:translateY(-101%);transition:transform .5s cubic-bezier(.65,0,.15,1)}
+.btn:hover .btn__f,.btn:focus-visible .btn__f{transform:none}
+.btn:hover,.btn:focus-visible{color:var(--white-100)!important;box-shadow:0 12px 26px -14px rgba(74,56,20,.7)}
+.btn:active{transform:translateY(1px)}
+.btn__t{position:relative;display:inline-flex;align-items:center;gap:.7em}
+.btn--line{background:transparent;color:var(--white-100)!important;box-shadow:inset 0 0 0 1px var(--brand-500)}
+.btn--line .btn__f{background:var(--brand-500)}
+.btn--line:hover,.btn--line:focus-visible{color:var(--ink-900)!important}
+.btn--wa .btn__f{background:var(--wa-dark)}
+.btn--wa:hover,.btn--wa:focus-visible{color:var(--white-100)!important}
+.wai{width:1.2em;height:1.2em;flex:0 0 auto;fill:currentColor}
+
+/* ============================================================
+   3. HERO — foto a sangre + velo bronce + H1 en tres líneas
+   Regla dura: entra completo en pantalla, sin scroll, en desktop y mobile.
+   ============================================================ */
+.hero{position:relative;overflow:hidden;min-height:100svh;background:var(--navy-900);color:var(--white-100);display:grid;align-content:center;padding:calc(var(--hdr-h) + 2.4rem) var(--gut) calc(var(--gut) + 1.2rem)}
+.hero__media{position:absolute;inset:0 0 0 auto;width:min(56%,860px);z-index:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.35) 16%,#000 46%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.35) 16%,#000 46%)}
+.hero__media image-slot{width:100%;height:100%}
+.hero__veil{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(96deg,rgba(74,56,20,.97) 0 30%,rgba(74,56,20,.82) 52%,rgba(74,56,20,.5) 78%,rgba(74,56,20,.38) 100%),linear-gradient(180deg,rgba(0,0,0,.5) 0,rgba(0,0,0,.12) 30%,rgba(0,0,0,.1) 60%,rgba(0,0,0,.42) 100%)}
+.hero__txt{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:clamp(1.1rem,2.2vw,1.9rem);max-width:min(100%,54rem)}
+.hero__eyebrow{letter-spacing:.22em}
+.hero h1{font-size:clamp(1.55rem,3.3vw,3.2rem);line-height:1.1;display:flex;flex-direction:column;align-items:flex-start}
+.hline{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em;max-width:100%}
+.h1-a{font-family:var(--font-display);font-weight:200;text-transform:none;font-size:clamp(1.5rem,3.8vw,3.3rem);letter-spacing:.01em;line-height:1.05;opacity:.92;margin-top:-.3rem}
+.h1-b{font-weight:600;font-size:clamp(2rem,5.6vw,4.9rem);letter-spacing:-.018em;line-height:.92}
+.h1-c{font-family:var(--font-display);font-weight:200;text-transform:uppercase;font-size:clamp(.85rem,1.25vw,1.15rem);line-height:1.9;letter-spacing:.14em;opacity:.82;border-top:1px solid rgba(255,255,255,.22);padding-top:.9rem}
+.h1-b + .h1-c{margin-top:1rem}
+@media(min-width:1024px){.hero h1 .h1-a,.hero h1 .h1-b{white-space:nowrap}}
+.acc{color:var(--brand-500)}
+.hero__pre{font-size:var(--body-l);opacity:.88;max-width:34em;text-wrap:pretty}
+/* firma #5: un solo dato concreto de confianza, nunca grid de cifras */
+.claim{display:inline-block;font-family:var(--font-display);font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(.92rem,1.25vw,1.12rem);color:var(--white-100);border-bottom:.09em solid var(--brand-500);padding-bottom:.5em}
+.hero__acts{display:flex;flex-wrap:wrap;gap:.8rem 1rem;align-items:center;margin-top:.6rem}
+
+/* ============================================================
+   4. FLOTANTES — WhatsApp + volver arriba con anillo de progreso
+   ============================================================ */
+.wa{position:fixed;right:clamp(1rem,3vw,2rem);bottom:clamp(1rem,3vw,2rem);z-index:78;width:clamp(56px,6vw,62px);height:clamp(56px,6vw,62px);border-radius:50%;background:var(--wa);color:#fff!important;display:grid;place-items:center;box-shadow:0 6px 22px rgba(74,56,20,.4);opacity:0;visibility:hidden;transform:translateY(14px) scale(.9);transition:opacity .4s,transform .4s cubic-bezier(.2,.7,.2,1),visibility .4s,background .3s;isolation:isolate}
+.wa.on{opacity:1;visibility:visible;transform:none}
+.wa:hover{background:var(--wa-dark);color:#fff!important;transform:translateY(-2px) scale(1.04)}
+body.menu-open .wa{opacity:0;visibility:hidden;pointer-events:none}
+.wa .wai{width:58%;height:58%;position:relative;z-index:1}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--wa);z-index:-1;animation:wa-pulse 2.6s cubic-bezier(.25,.6,.35,1) infinite}
+.wa::after{animation-delay:1.3s}
+.wa:hover::before,.wa:hover::after{animation-play-state:paused}
+@keyframes wa-pulse{0%{transform:scale(1);opacity:.5}70%{transform:scale(2);opacity:0}100%{transform:scale(2);opacity:0}}
+@media(prefers-reduced-motion:reduce){.wa::before,.wa::after{animation:none;display:none}}
+
+.bt{position:fixed;left:clamp(1rem,3vw,2rem);bottom:clamp(1rem,3vw,2rem);z-index:78;width:clamp(52px,5.6vw,58px);height:clamp(52px,5.6vw,58px);display:grid;place-items:center;opacity:0;visibility:hidden;transform:translateY(14px) scale(.9);transition:opacity .4s,transform .45s cubic-bezier(.2,.7,.2,1),visibility .4s}
+.bt.on{opacity:1;visibility:visible;transform:none}
+body.menu-open .bt{opacity:0;visibility:hidden;pointer-events:none}
+.bt__ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+.bt__ring circle{fill:none;stroke-width:2}
+.bt__tr{stroke:rgba(74,56,20,.22)}
+.bt__pr{stroke:var(--brand-500);stroke-linecap:round;transition:stroke-dashoffset .15s linear}
+.bt__ar{position:relative;width:74%;aspect-ratio:1;border-radius:50%;background:var(--bg-200);color:var(--brand-700);display:grid;place-items:center;font-size:1.15rem;line-height:1;box-shadow:0 6px 20px rgba(74,56,20,.3);transition:background .35s,color .35s,transform .35s}
+.bt:hover .bt__ar{background:var(--brand-700);color:var(--white-100);transform:translateY(-3px)}
+
+/* ============================================================
+   5. SECCIONES — base común (entrega 2)
+   ============================================================ */
+.sec{padding:var(--py-30-45) var(--gut);position:relative}
+.sec--card{background:var(--bg-200)}
+.sec--dark{background:var(--navy-900);color:var(--white-100)}
+.title-l{font-size:var(--title-l)}
+.title-m{font-size:var(--title-m)}
+.shead{max-width:52rem;margin-bottom:clamp(2.2rem,4vw,3.4rem)}
+.shead .tag{display:block;margin-bottom:1.1rem}
+.shead h2{margin-bottom:1.1rem}
+.lead{font-size:var(--body-l);max-width:44em;text-wrap:pretty;opacity:.88}
+/* revelado suave al entrar en pantalla (IntersectionObserver) */
+html.js .rev{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+html.js .rev.in{opacity:1;transform:none}
+
+/* ============================================================
+   6. FRANJA DE CREDENCIALES — lista en flujo, nunca grid de 4 cifras
+   ============================================================ */
+.creds{background:var(--bg-200);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(1.6rem,3vw,2.4rem) var(--gut)}
+.creds__in{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem clamp(.9rem,1.7vw,1.9rem);max-width:88rem}
+.creds__k{font-family:var(--font-body);font-size:var(--body-xs);text-transform:uppercase;letter-spacing:.24em;font-weight:600;color:var(--brand-700);flex:0 0 auto;padding-right:clamp(.4rem,1.4vw,1.2rem);border-right:1px solid var(--line)}
+.cred{display:inline-flex;align-items:center;gap:.55em;font-family:var(--font-display);font-weight:500;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(.84rem,1.02vw,.98rem);line-height:1.25;color:var(--ink-900)}
+.cred svg{width:1.15em;height:1.15em;flex:0 0 auto;fill:none;stroke:var(--brand-500);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:720px){
+.creds__in{flex-direction:column;align-items:flex-start;gap:.85rem}
+.creds__k{border-right:0;padding-right:0}
+}
+
+/* ============================================================
+   7. ÁREAS DE PRÁCTICA — filas alternadas (firma #1 de la familia)
+   ============================================================ */
+.areas{display:flex;flex-direction:column;gap:clamp(3rem,6vw,6.5rem)}
+.row-area{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(1.5rem,5vw,5rem);align-items:center;scroll-margin-top:calc(var(--hdr-h) + 1.5rem)}
+.row-area__txt{position:relative;z-index:1}
+.row-area__in{display:flex;flex-direction:column;align-items:flex-start;gap:1.05rem}
+.row-area__ph{position:relative;z-index:2;aspect-ratio:4/3;background:var(--bg-100);border-radius:18px;overflow:hidden;box-shadow:var(--sh-soft)}
+.row-area__ph image-slot{width:100%;height:100%}
+.row-area--flip .row-area__txt{order:2}
+.row-area--flip .row-area__ph{order:1}
+.card-area__k{font-family:var(--font-body);font-size:var(--body-xs);text-transform:uppercase;letter-spacing:.22em;font-weight:600;color:var(--brand-700)}
+.row-area h3{font-size:clamp(1.6rem,3vw,2.6rem);color:var(--brand-700)}
+.card-area__d{font-size:var(--body-l);text-wrap:pretty;max-width:40em;opacity:.9}
+.srv-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:.15rem .55rem;font-family:var(--font-display);font-weight:500;text-transform:uppercase;letter-spacing:.07em;font-size:clamp(.86rem,1.1vw,1rem);color:var(--ink-900)}
+.srv-line span{color:var(--brand-500);font-weight:600}
+.row-area .btn{margin-top:.5rem}
+@media(max-width:820px){
+.row-area{grid-template-columns:1fr;gap:1.5rem}
+.row-area__ph{aspect-ratio:3/2;order:-1!important}
+.row-area--flip .row-area__txt{order:0}
+}
+
+/* ============================================================
+   8. QUIÉNES SOMOS + video institucional
+   ============================================================ */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.8rem,4vw,4.5rem);align-items:center}
+.about__b{display:flex;flex-direction:column;align-items:flex-start;gap:1.2rem}
+.pts{display:flex;flex-direction:column;gap:.85rem;margin:0;padding:0;list-style:none;max-width:38em}
+.pts li{position:relative;padding-left:1.9rem;font-size:var(--body-l);text-wrap:pretty}
+.pts li::before{content:"";position:absolute;left:0;top:.62em;width:.85rem;height:2px;background:var(--brand-500)}
+/* miniatura del video institucional: foto real del estudio + play → YouTube */
+.video{position:relative;display:block;border-radius:18px;overflow:hidden;aspect-ratio:16/10;box-shadow:var(--sh-soft);background:var(--navy-900)}
+.video img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1),opacity .4s}
+.video:hover img{transform:scale(1.04);opacity:.86}
+.video__vl{position:absolute;inset:0;background:linear-gradient(180deg,rgba(74,56,20,.1) 0,rgba(74,56,20,.72) 100%)}
+.video__play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(62px,7vw,84px);aspect-ratio:1;border-radius:50%;background:var(--brand-500);color:var(--ink-900);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .35s cubic-bezier(.2,.7,.2,1),background .3s}
+.video__play svg{width:38%;height:38%;fill:currentColor;margin-left:8%}
+.video:hover .video__play{transform:translate(-50%,-50%) scale(1.08);background:var(--white-100)}
+.video__cap{position:absolute;left:0;right:0;bottom:0;padding:clamp(1rem,2vw,1.5rem);color:var(--white-100);font-family:var(--font-display);font-weight:500;text-transform:uppercase;letter-spacing:.12em;font-size:var(--body-xs)}
+@media(max-width:880px){.about{grid-template-columns:1fr}.about__media{order:-1}}
+
+/* ============================================================
+   9. TESTIMONIOS — grid jerarquizado (2 destacados + 3 compactos)
+   ============================================================ */
+.tsts{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(1rem,2vw,1.6rem)}
+.tst{background:var(--bg-200);border-radius:18px;padding:clamp(1.4rem,2.4vw,2.2rem);display:flex;flex-direction:column;gap:1rem;box-shadow:0 18px 42px -26px rgba(74,56,20,.4);border-top:3px solid var(--brand-500)}
+.sec--card .tst{background:var(--bg-100)}
+.tst--big{grid-column:span 3}
+.tst--sm{grid-column:span 2}
+.tst__q{font-size:var(--body-l);text-wrap:pretty;font-style:italic}
+.tst--big .tst__q{font-size:var(--body-xl);line-height:1.45}
+.tst--sm .tst__q{font-size:var(--body-m)}
+.tst__f{display:flex;flex-direction:column;gap:.2rem;margin-top:auto}
+.tst__n{font-family:var(--font-display);font-weight:500;text-transform:uppercase;letter-spacing:.08em;font-size:var(--body-s);color:var(--brand-700)}
+.tsts__note{margin-top:clamp(1.2rem,2vw,1.8rem);font-size:var(--body-s);opacity:.66}
+@media(max-width:980px){.tst--big{grid-column:span 6}.tst--sm{grid-column:span 3}}
+/* mobile: carrusel horizontal con scroll táctil en vez del grid */
+@media(max-width:700px){
+.tsts{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:.9rem;padding-bottom:1rem;margin-inline:calc(var(--gut) * -1);padding-inline:var(--gut);scrollbar-width:thin}
+.tst{flex:0 0 min(78vw,20rem);scroll-snap-align:start}
+.tst__q,.tst--big .tst__q,.tst--sm .tst__q{font-size:var(--body-m)}
+}
+
+/* ============================================================
+   10. FAQ — acordeón exclusivo, expansión con grid-template-rows
+   ============================================================ */
+.faq{max-width:62rem;border-top:1px solid var(--line)}
+.faq__it{border-bottom:1px solid var(--line)}
+.faq__q{margin:0;font-size:inherit}
+.faq__b{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;padding:1.25rem 0;min-height:44px;font-family:var(--font-display);font-weight:500;text-transform:uppercase;font-size:clamp(1rem,1.5vw,1.28rem);line-height:1.25;transition:color .3s}
+.faq__b:hover{color:var(--brand-700)}
+.faq__ic{position:relative;flex:0 0 auto;width:16px;height:16px;margin-top:.3em;transition:transform .18s ease}
+.faq__ic::before,.faq__ic::after{content:"";position:absolute;background:var(--brand-500);border-radius:2px}
+.faq__ic::before{left:0;right:0;top:7px;height:2px}
+.faq__ic::after{top:0;bottom:0;left:7px;width:2px;transition:opacity .18s ease}
+.faq__it.is-open .faq__ic{transform:rotate(180deg)}
+.faq__it.is-open .faq__ic::after{opacity:0}
+.faq__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .2s ease}
+.faq__it.is-open .faq__a{grid-template-rows:1fr}
+.faq__in{overflow:hidden}
+.faq__in p{padding:0 0 1.4rem;max-width:48em;opacity:.86;text-wrap:pretty}
+html:not(.js) .faq__a{grid-template-rows:1fr}
+
+/* ============================================================
+   11. CIERRE + CONTACTO — único bloque con 3 canales visibles
+   ============================================================ */
+.cierre{max-width:46rem;margin-bottom:clamp(2.2rem,4vw,3.4rem)}
+.cierre h2{font-size:var(--title-l);margin-bottom:1.1rem}
+.contacto{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2rem,4vw,4.5rem);align-items:start}
+.form{display:grid;gap:1rem;max-width:34rem}
+.field{display:flex;flex-direction:column;gap:.45rem}
+.field label{font-size:var(--body-xs);text-transform:uppercase;letter-spacing:.18em;font-weight:600;color:var(--brand-300)}
+.field input,.field select,.field textarea{font:inherit;color:var(--white-100);background:rgba(255,255,255,.06);border:0;box-shadow:inset 0 0 0 1px var(--line-w);padding:.85em 1em;width:100%;min-height:44px;transition:box-shadow .3s,background .3s}
+.field textarea{min-height:6.5rem;resize:vertical}
+.field select option{color:var(--ink-900)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 2px var(--brand-500)}
+.form .btn{justify-self:start;margin-top:.4rem}
+.form-ok{max-width:34rem;padding:1.5rem 1.6rem;box-shadow:inset 0 0 0 1px var(--brand-500);font-size:var(--body-l)}
+.channels{display:flex;flex-direction:column;gap:1.4rem}
+.chan{display:flex;flex-direction:column;gap:.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--line-w)}
+.chan__k{font-size:var(--body-xs);text-transform:uppercase;letter-spacing:.22em;font-weight:600;color:var(--brand-300)}
+.chan__v{font-family:var(--font-display);font-weight:500;text-transform:uppercase;font-size:clamp(1.05rem,1.6vw,1.4rem);letter-spacing:.02em}
+.chan__v--mail{text-transform:none;letter-spacing:.01em;font-size:clamp(1rem,1.35vw,1.2rem)}
+.chan__n{font-size:var(--body-s);opacity:.7}
+.channels .hero__acts{margin-top:0}
+@media(max-width:900px){.contacto{grid-template-columns:1fr}}
+
+/* ============================================================
+   12. FOOTER
+   ============================================================ */
+.footer{background:var(--navy-900);color:var(--white-100);padding:clamp(3.2rem,6vw,5.5rem) var(--gut) var(--gut);overflow:hidden;text-align:center}
+.footer>*+*{border-top:1px solid var(--line-w)}
+.ft__brand{padding-bottom:clamp(1.6rem,3vw,2.4rem);display:flex;flex-direction:column;align-items:center;gap:.35rem}
+.ft__brand .brand__k{color:var(--brand-300)}
+.ft__brand .brand__w{font-size:clamp(1.9rem,4vw,2.8rem);color:var(--white-100)}
+.ft__nav{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.9rem clamp(1.2rem,2.6vw,2.6rem);padding:clamp(1.2rem,2.2vw,1.7rem) 0;font-size:var(--body-xs);text-transform:uppercase;letter-spacing:.18em;font-weight:600}
+.ft__sep{width:1px;height:1.1em;background:var(--line-w)}
+.ft__data{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:clamp(1.4rem,2.4vw,2rem);padding:clamp(1.6rem,2.8vw,2.4rem) 0;text-align:left}
+.ft__d h3{font-family:var(--font-body);font-size:var(--body-xs);letter-spacing:.22em;text-transform:uppercase;color:var(--brand-300);font-weight:600;margin-bottom:.4rem}
+.ft__d p{font-size:var(--body-s);opacity:.9;line-height:1.7}
+.ft__giant{padding:clamp(1.6rem,3vw,2.6rem) 0 clamp(.6rem,1.4vw,1.2rem);overflow:hidden}
+.fg{display:block;font-family:var(--font-display);font-weight:600;font-size:clamp(4.5rem,20vw,16rem);line-height:.9;text-transform:uppercase;letter-spacing:.01em;color:var(--brand-700)}
+.ft__legal{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.6rem clamp(1.2rem,2.4vw,2.4rem);padding-top:1.2rem;font-size:var(--body-s);opacity:.65}
+@media(max-width:620px){.ft__data{text-align:center}}
+
+/* ============================================================
+   13. RESPONSIVE DEL HERO (regla dura: sin scroll también en mobile)
+   ============================================================ */
+@media(max-width:900px){
+.hero{padding-top:calc(var(--hdr-h) + 1.6rem);align-content:end}
+.hero__txt{gap:clamp(.9rem,3vw,1.5rem)}
+.hero h1{font-size:clamp(1.5rem,6.4vw,2.4rem)}
+.hero h1 .h1-a{font-size:clamp(1.25rem,5.2vw,2rem)}
+.hero h1 .h1-b{font-size:clamp(1.9rem,8.2vw,3.1rem)}
+.hero h1 .h1-c{font-size:.8rem;letter-spacing:.12em;line-height:1.6;padding-top:.75rem}
+.hero__pre{font-size:.95rem}
+/* mobile: el único punto de contacto visible es el flotante */
+.hero__acts{display:none}
+.hero__media{inset:0;width:auto;-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.5) 14%,#000 34%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.5) 14%,#000 34%)}
+.hero__veil{background:linear-gradient(180deg,rgba(74,56,20,.92) 0 30%,rgba(74,56,20,.74) 55%,rgba(74,56,20,.9) 100%)}
+/* excepción: el bloque de cierre sí muestra sus botones (contenido de sección, no fijo) */
+.channels .hero__acts{display:flex}
+}
+@media(max-height:660px) and (min-width:901px){
+.hero h1{font-size:clamp(1.4rem,2.9vw,2.5rem)}
+.hero h1 .h1-a{font-size:clamp(1.15rem,2.4vw,1.9rem)}
+.hero h1 .h1-b{font-size:clamp(1.7rem,3.9vw,3.1rem)}
+.hero h1 .h1-c{font-size:.8rem;line-height:1.6;padding-top:.75rem}
+.hero h1 .h1-b + .h1-c{margin-top:.85rem}
+.hero__txt{gap:clamp(.7rem,1.5vw,1rem)}
+.hero__pre{font-size:1rem}
+.hero__acts{margin-top:.3rem}
+}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}html.js .rev{opacity:1;transform:none}}

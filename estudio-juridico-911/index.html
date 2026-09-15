@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estudio Jurídico 911 — Abogados en CABA y GBA | Familia, Laboral y Accidentes de Tránsito</title>
+<meta name="description" content="Estudio Jurídico 911: divorcios y sucesiones, despidos y reclamos laborales, accidentes de tránsito. Más de 20 años de trayectoria, abogados egresados de la UBA. Consulta inicial sin costo y respuesta en menos de 24 horas. CABA y GBA.">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;500;600&family=Archivo:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-wa" viewBox="0 0 32 32"><path d="M26.576 5.363c-2.69-2.69-6.406-4.354-10.511-4.354-8.209 0-14.865 6.655-14.865 14.865 0 2.732 0.737 5.291 2.022 7.491l-0.038-0.070-2.109 7.702 7.879-2.067c2.051 1.139 4.498 1.809 7.102 1.809h0.006c8.209-0.003 14.862-6.659 14.862-14.868 0-4.103-1.662-7.817-4.349-10.507l0 0zM16.062 28.228h-0.005c-0 0-0.001 0-0.001 0-2.319 0-4.489-0.64-6.342-1.753l0.056 0.031-0.451-0.267-4.675 1.227 1.247-4.559-0.294-0.467c-1.185-1.862-1.889-4.131-1.889-6.565 0-6.822 5.531-12.353 12.353-12.353s12.353 5.531 12.353 12.353c0 6.822-5.53 12.353-12.353 12.353h-0zM22.838 18.977c-0.371-0.186-2.197-1.083-2.537-1.208-0.341-0.124-0.589-0.185-0.837 0.187-0.246 0.371-0.958 1.207-1.175 1.455-0.216 0.249-0.434 0.279-0.805 0.094-1.15-0.466-2.138-1.087-2.997-1.852l0.010 0.009c-0.799-0.74-1.484-1.587-2.037-2.521l-0.028-0.052c-0.216-0.371-0.023-0.572 0.162-0.757 0.167-0.166 0.372-0.434 0.557-0.65 0.146-0.179 0.271-0.384 0.366-0.604l0.006-0.017c0.043-0.087 0.068-0.188 0.068-0.296 0-0.131-0.037-0.253-0.101-0.357l0.002 0.003c-0.094-0.186-0.836-2.014-1.145-2.758-0.302-0.724-0.609-0.625-0.836-0.637-0.216-0.010-0.464-0.012-0.712-0.012-0.395 0.010-0.746 0.188-0.988 0.463l-0.001 0.002c-0.802 0.761-1.3 1.834-1.3 3.023 0 0.026 0 0.053 0.001 0.079l-0-0.004c0.131 1.467 0.681 2.784 1.527 3.857l-0.012-0.015c1.604 2.379 3.742 4.282 6.251 5.564l0.094 0.043c0.548 0.248 1.25 0.513 1.968 0.74l0.149 0.041c0.442 0.14 0.951 0.221 1.479 0.221 0.303 0 0.601-0.027 0.889-0.078l-0.031 0.004c1.069-0.223 1.956-0.868 2.497-1.749l0.009-0.017c0.165-0.366 0.261-0.793 0.261-1.242 0-0.185-0.016-0.366-0.047-0.542l0.003 0.019c-0.092-0.155-0.34-0.247-0.712-0.434z"></path></symbol></svg>
+
+<a class="skip" href="#estudio">Ir al contenido</a>
+
+<!-- ============================================================
+     HEADER — barra limpia: solo marca + hamburguesa.
+     Los 6 ítems de navegación viven en el overlay (criterio Urgencia).
+     ============================================================ -->
+<div class="hdrbar"></div>
+
+<!-- PENDIENTE: reemplazar este lockup tipográfico por el logo real
+     (insignia circular dorada) una vez recibido el archivo original.
+     Guardarlo en assets/logo.<ext>. No recrear el logo de memoria. -->
+<a class="brand" href="#top" aria-label="Estudio Jurídico 911 — volver arriba">
+  <span class="brand__w" aria-hidden="true">911</span>
+  <span class="brand__n">
+    <span class="brand__k">Estudio</span>
+    <span class="brand__k">Jurídico</span>
+  </span>
+</a>
+
+<button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+  <span class="b1"></span><span class="b2"></span><span class="b3"></span>
+</button>
+
+<!-- ============================================================
+     MENÚ OVERLAY — 6 secciones + "Consulta directa" (tel + WhatsApp)
+     ============================================================ -->
+<div class="menu" id="menu">
+  <div class="menu__in">
+    <nav class="menu__main" aria-label="Secciones del sitio">
+      <a class="menu__l" href="#estudio">Nuestro Estudio</a>
+      <a class="menu__l" href="#nosotros">Nosotros</a>
+      <a class="menu__l" href="#familia">Derecho de Familia</a>
+      <a class="menu__l" href="#laboral">Derecho Laboral</a>
+      <a class="menu__l" href="#transito">Accidentes de Tránsito</a>
+      <a class="menu__l" href="#contacto">Contacto</a>
+    </nav>
+    <div class="menu__sub">
+      <h2>Consulta directa</h2>
+      <div class="menu__srv">
+        <a class="menu__c" href="tel:+541123029911">Llamar 11-2302-9911</a>
+        <a class="menu__c menu__c--wa" href="https://wa.me/5491123029911" target="_blank" rel="noopener">
+          <svg class="wai" aria-hidden="true"><use href="#i-wa"></use></svg>
+          <span>Escribir por WhatsApp</span>
+        </a>
+      </div>
+    </div>
+    <div class="menu__foot">
+      <span>Estudio Jurídico 911 — Familia, Laboral y Accidentes de Tránsito</span>
+      <span>CABA y Provincia de Buenos Aires</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     FLOTANTES
+     ============================================================ -->
+<a class="wa" id="wafloat" href="https://wa.me/5491123029911" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg class="wai" aria-hidden="true"><use href="#i-wa"></use></svg>
+  <span class="vh">Escribir por WhatsApp</span>
+</a>
+<button class="bt" id="backtop" type="button" aria-label="Volver arriba">
+  <svg class="bt__ring" viewBox="0 0 48 48" aria-hidden="true"><circle class="bt__tr" cx="24" cy="24" r="21"></circle><circle class="bt__pr" cx="24" cy="24" r="21"></circle></svg>
+  <span class="bt__ar" aria-hidden="true">↑</span>
+</button>
+
+<main id="top">
+
+<!-- ============================================================
+     2. HERO — un solo botón de contacto (WhatsApp). Sin scroll.
+     ============================================================ -->
+<section class="hero">
+  <div class="hero__media">
+    <image-slot id="ej911-hero" shape="rect" fit="cover"
+      src="https://images.pexels.com/photos/6077091/pexels-photo-6077091.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1800"
+      credit="Pexels"
+      placeholder="Foto institucional sobria: abogado/a en su oficina, tono serio y profesional, iluminación cálida. Arrastrá la foto real acá."></image-slot>
+  </div>
+  <div class="hero__veil"></div>
+  <div class="hero__txt">
+    <p class="tag hero__eyebrow">Estudio Jurídico 911 · CABA y GBA</p>
+    <h1>
+      <span class="hline h1-a">Protegemos tus derechos</span>
+      <span class="hline h1-b">con <span class="acc">profesionalismo</span></span>
+      <span class="hline h1-c">Derecho de Familia · Derecho Laboral · Accidentes de Tránsito</span>
+    </h1>
+    <p class="hero__pre">Abogados egresados de la UBA. Consulta inicial sin costo y respuesta en menos de 24 horas.</p>
+    <p><span class="claim">Más de 20 años de trayectoria</span></p>
+    <div class="hero__acts">
+      <a class="btn btn--wa" href="https://wa.me/5491123029911" target="_blank" rel="noopener">
+        <span class="btn__f"></span>
+        <span class="btn__t">Evaluar mi caso ahora <svg class="wai" aria-hidden="true"><use href="#i-wa"></use></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     3. FRANJA DE CREDENCIALES — lista en flujo, no grid de cifras
+     ============================================================ -->
+<section class="creds" id="estudio" aria-label="Nuestro estudio">
+  <div class="creds__in rev">
+    <p class="creds__k">Nuestro estudio</p>
+    <p class="cred">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+      Respuesta en menos de 24 horas
+    </p>
+    <p class="cred">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+      Consulta inicial sin costo
+    </p>
+    <p class="cred">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7v5c0 4.4 3.4 8.3 8 9 4.6-.7 8-4.6 8-9V7l-8-4Z"></path></svg>
+      Más de 20 años de experiencia
+    </p>
+    <p class="cred">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"></path><circle cx="12" cy="10" r="2.6"></circle></svg>
+      Atención CABA y GBA
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. ÁREAS DE PRÁCTICA — filas alternadas (firma #1)
+     Cada fila con su propio CTA de texto específico → WhatsApp.
+     ============================================================ -->
+<section class="sec" id="areas" aria-labelledby="areas-t">
+  <div class="shead rev">
+    <p class="tag">Áreas de práctica</p>
+    <h2 class="title-m" id="areas-t">Tres frentes en los que trabajamos todos los días</h2>
+  </div>
+  <div class="areas">
+
+    <article class="row-area rev" id="familia">
+      <div class="row-area__txt"><div class="row-area__in">
+        <p class="card-area__k">Divorcios y sucesiones</p>
+        <h3>Derecho de Familia</h3>
+        <p class="card-area__d">Nos especializamos en divorcios y sucesiones, garantizando un servicio eficaz, ágil y con enfoque humano.</p>
+        <p class="srv-line">Divorcio de mutuo acuerdo<span>·</span>Divorcio contencioso<span>·</span>Custodia y régimen de visitas<span>·</span>Tramitación de herencias</p>
+        <a class="btn" href="https://wa.me/5491123029911" target="_blank" rel="noopener">
+          <span class="btn__f"></span><span class="btn__t">Consultar por mi divorcio o sucesión</span>
+        </a>
+      </div></div>
+      <div class="row-area__ph">
+        <image-slot id="ej911-familia" shape="rect" fit="cover"
+          src="https://images.pexels.com/photos/5699456/pexels-photo-5699456.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"
+          credit="Pexels"
+          placeholder="Oficina cálida, documento firmándose, tono humano. Arrastrá la foto real acá."></image-slot>
+      </div>
+    </article>
+
+    <article class="row-area row-area--flip rev" id="laboral">
+      <div class="row-area__txt"><div class="row-area__in">
+        <p class="card-area__k">Trabajadores y empresas</p>
+        <h3>Derecho Laboral</h3>
+        <p class="card-area__d">Defendemos tus derechos laborales con compromiso y experiencia, asesorando a trabajadores y empresas en cada etapa.</p>
+        <p class="srv-line">Despidos<span>·</span>Reclamos salariales<span>·</span>Acoso laboral<span>·</span>Accidentes de trabajo<span>·</span>Contratos y negociaciones colectivas</p>
+        <a class="btn" href="https://wa.me/5491123029911" target="_blank" rel="noopener">
+          <span class="btn__f"></span><span class="btn__t">Consultar por mi despido o conflicto laboral</span>
+        </a>
+      </div></div>
+      <div class="row-area__ph">
+        <image-slot id="ej911-laboral" shape="rect" fit="cover"
+          src="https://images.pexels.com/photos/5686105/pexels-photo-5686105.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"
+          credit="Pexels"
+          placeholder="Entorno de oficina profesional, entrevista o firma de contrato. Arrastrá la foto real acá."></image-slot>
+      </div>
+    </article>
+
+    <article class="row-area rev" id="transito">
+      <div class="row-area__txt"><div class="row-area__in">
+        <p class="card-area__k">Desde el primer momento</p>
+        <h3>Accidentes de Tránsito</h3>
+        <p class="card-area__d">Te acompañamos desde el primer momento: recopilación de información, atención a lesionados, gestión con aseguradoras.</p>
+        <p class="srv-line">Recopilación de datos en el lugar<span>·</span>Comunicación con autoridades<span>·</span>Negociación con compañías de seguros</p>
+        <a class="btn" href="https://wa.me/5491123029911" target="_blank" rel="noopener">
+          <span class="btn__f"></span><span class="btn__t">Consultar por mi accidente de tránsito</span>
+        </a>
+      </div></div>
+      <div class="row-area__ph">
+        <image-slot id="ej911-transito" shape="rect" fit="cover"
+          src="https://images.pexels.com/photos/210182/pexels-photo-210182.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"
+          credit="Pexels"
+          placeholder="Escena de calle / vehículos de forma sobria, no gráfica ni alarmante. Arrastrá la foto real acá."></image-slot>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     5. QUIÉNES SOMOS + video institucional
+     ============================================================ -->
+<section class="sec sec--card" id="nosotros" aria-labelledby="nosotros-t">
+  <div class="about">
+    <div class="about__b rev">
+      <p class="tag">Nosotros</p>
+      <h2 class="title-m" id="nosotros-t">Un estudio que creció por recomendación</h2>
+      <ul class="pts">
+        <li>Fundado por profesionales con sólida trayectoria y vocación por la justicia.</li>
+        <li>Equipo multidisciplinario, capacitado y comprometido con la excelencia.</li>
+        <li>Crecimiento impulsado por la recomendación de los propios clientes.</li>
+        <li>Ejercicio del derecho con integridad, actualización permanente y respeto por cada caso.</li>
+      </ul>
+      <a class="btn" href="https://www.youtube.com/watch?v=TsXgj_B0kRc" target="_blank" rel="noopener">
+        <span class="btn__f"></span><span class="btn__t">Ver video institucional</span>
+      </a>
+    </div>
+    <div class="about__media rev">
+      <a class="video" href="https://www.youtube.com/watch?v=TsXgj_B0kRc" target="_blank" rel="noopener" aria-label="Ver el video institucional del Estudio Jurídico 911 en YouTube">
+        <img src="assets/fotos/dr-santiago-video-institucional.jpg" alt="Abogado del Estudio Jurídico 911 durante el video institucional" width="1280" height="720" loading="lazy">
+        <span class="video__vl"></span>
+        <span class="video__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
+        <span class="video__cap">Video institucional</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6. TESTIMONIOS REALES — grid jerarquizado (2 destacados + 3 compactos)
+     Texto tomado tal cual de las reseñas del cliente. No reformular.
+     ============================================================ -->
+<section class="sec" id="testimonios" aria-labelledby="tst-t">
+  <div class="shead rev">
+    <p class="tag">Testimonios</p>
+    <h2 class="title-m" id="tst-t">Lo que dicen quienes ya nos consultaron</h2>
+  </div>
+  <div class="tsts rev">
+    <figure class="tst tst--big">
+      <blockquote class="tst__q">“Uno de los mejores estudios jurídicos, muy buena atención y predisposición para aclarar mis dudas! RECOMENDADO.”</blockquote>
+      <figcaption class="tst__f"><span class="tst__n">Juan C. Bracamonte</span></figcaption>
+    </figure>
+    <figure class="tst tst--big">
+      <blockquote class="tst__q">“Son unos genios, un excelente trato, me representaron bien y consiguieron más de lo que esperaba. Muy recomendable.”</blockquote>
+      <figcaption class="tst__f"><span class="tst__n">Ezequiel Martinez</span></figcaption>
+    </figure>
+    <figure class="tst tst--sm">
+      <blockquote class="tst__q">“Exelente profesional, y de mi parte sólo agradecimiento. No duden en consultarlo. A seguir por ese camino, saludos.”</blockquote>
+      <figcaption class="tst__f"><span class="tst__n">Ivan Grillo</span></figcaption>
+    </figure>
+    <figure class="tst tst--sm">
+      <blockquote class="tst__q">“Excelente profesionales, tienen mucha paciencia y te acompañan en todo momento.”</blockquote>
+      <figcaption class="tst__f"><span class="tst__n">Ariel Huaman</span></figcaption>
+    </figure>
+    <figure class="tst tst--sm">
+      <blockquote class="tst__q">“Excelente atención un merecido 5 estrellas muy conforme con la indemnización que recibe gracias a ellos.”</blockquote>
+      <figcaption class="tst__f"><span class="tst__n">Diego Roldan</span></figcaption>
+    </figure>
+  </div>
+  <p class="tsts__note rev">Reseñas publicadas por clientes del estudio, reproducidas textualmente.</p>
+</section>
+
+<!-- ============================================================
+     7. PREGUNTAS FRECUENTES — acordeón exclusivo
+     ============================================================ -->
+<section class="sec sec--card" id="faq" aria-labelledby="faq-t">
+  <div class="shead rev">
+    <p class="tag">Preguntas frecuentes</p>
+    <h2 class="title-m" id="faq-t">Lo que más nos consultan</h2>
+  </div>
+  <div class="faq rev">
+
+    <div class="faq__it">
+      <h3 class="faq__q"><button class="faq__b" type="button" aria-expanded="false" aria-controls="fa1"><span>¿La consulta inicial tiene costo?</span><i class="faq__ic" aria-hidden="true"></i></button></h3>
+      <div class="faq__a" id="fa1"><div class="faq__in"><p>No, la consulta inicial es gratuita.</p></div></div>
+    </div>
+
+    <div class="faq__it">
+      <h3 class="faq__q"><button class="faq__b" type="button" aria-expanded="false" aria-controls="fa2"><span>¿En cuánto tiempo responden?</span><i class="faq__ic" aria-hidden="true"></i></button></h3>
+      <div class="faq__a" id="fa2"><div class="faq__in"><p>Respondemos en menos de 24 horas.</p></div></div>
+    </div>
+
+    <div class="faq__it">
+      <h3 class="faq__q"><button class="faq__b" type="button" aria-expanded="false" aria-controls="fa3"><span>¿En qué zonas atienden?</span><i class="faq__ic" aria-hidden="true"></i></button></h3>
+      <div class="faq__a" id="fa3"><div class="faq__in"><p>CABA y Provincia de Buenos Aires (GBA).</p></div></div>
+    </div>
+
+    <div class="faq__it">
+      <h3 class="faq__q"><button class="faq__b" type="button" aria-expanded="false" aria-controls="fa4"><span>¿Qué hago si tuve un accidente de tránsito?</span><i class="faq__ic" aria-hidden="true"></i></button></h3>
+      <div class="faq__a" id="fa4"><div class="faq__in"><p>Solicitá los datos del otro conductor (nombre, DNI, domicilio, patente, seguro), llamá a una ambulancia y a la policía si hay heridos, y anotá los datos de los testigos si es posible.</p></div></div>
+    </div>
+
+    <div class="faq__it">
+      <h3 class="faq__q"><button class="faq__b" type="button" aria-expanded="false" aria-controls="fa5"><span>¿Puedo iniciar un divorcio si no estamos de acuerdo en todo?</span><i class="faq__ic" aria-hidden="true"></i></button></h3>
+      <div class="faq__a" id="fa5"><div class="faq__in"><p>Sí, trabajamos tanto divorcios de mutuo acuerdo como contenciosos.</p></div></div>
+    </div>
+
+    <div class="faq__it">
+      <h3 class="faq__q"><button class="faq__b" type="button" aria-expanded="false" aria-controls="fa6"><span>¿Qué hago si me despidieron sin causa?</span><i class="faq__ic" aria-hidden="true"></i></button></h3>
+      <div class="faq__a" id="fa6"><div class="faq__in"><p>Te asesoramos en reclamos de indemnización, salarios adeudados y cualquier situación de despido injustificado.</p></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     8. CIERRE + CONTACTO — único bloque con más de un canal visible
+     ============================================================ -->
+<section class="sec sec--dark" id="contacto" aria-labelledby="contacto-t">
+  <div class="cierre rev">
+    <p class="tag">Contacto</p>
+    <h2 id="contacto-t">Tu tranquilidad legal es nuestra prioridad</h2>
+    <p class="lead">Contanos tu caso por el canal que te resulte más cómodo. La consulta inicial no tiene costo y respondemos en menos de 24 horas.</p>
+  </div>
+  <div class="contacto rev">
+    <div>
+      <!-- PENDIENTE: el formulario no tiene backend definido todavía.
+           La conexión a un servicio de envío queda fuera de esta entrega. -->
+      <form class="form" id="form-consulta" novalidate>
+        <div class="field">
+          <label for="c-nombre">Nombre</label>
+          <input id="c-nombre" name="nombre" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="c-contacto">Teléfono o email</label>
+          <input id="c-contacto" name="contacto" type="text" autocomplete="tel" required>
+        </div>
+        <div class="field">
+          <label for="c-area">Área de consulta</label>
+          <select id="c-area" name="area" required>
+            <option value="" selected disabled>Elegí un área</option>
+            <option>Derecho de Familia</option>
+            <option>Derecho Laboral</option>
+            <option>Accidentes de Tránsito</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="c-mensaje">Mensaje breve</label>
+          <textarea id="c-mensaje" name="mensaje" rows="3" required></textarea>
+        </div>
+        <button class="btn" type="submit"><span class="btn__f"></span><span class="btn__t">Enviar consulta</span></button>
+      </form>
+      <p class="form-ok" id="form-ok" hidden>Recibimos tu consulta. Te vamos a contactar a la brevedad.</p>
+    </div>
+    <div class="channels">
+      <div class="chan">
+        <span class="chan__k">WhatsApp</span>
+        <a class="chan__v" href="https://wa.me/5491123029911" target="_blank" rel="noopener">11-2302-9911</a>
+        <span class="chan__n">La vía más rápida para contarnos tu caso.</span>
+      </div>
+      <div class="chan">
+        <span class="chan__k">Teléfono</span>
+        <a class="chan__v" href="tel:+541123029911">11-2302-9911</a>
+        <span class="chan__n">Línea alternativa: 11-6456-0884</span>
+      </div>
+      <div class="chan">
+        <span class="chan__k">Email</span>
+        <a class="chan__v chan__v--mail" href="mailto:estudiojuridico911@gmail.com">estudiojuridico911@gmail.com</a>
+      </div>
+      <div class="hero__acts">
+        <a class="btn btn--wa" href="https://wa.me/5491123029911" target="_blank" rel="noopener">
+          <span class="btn__f"></span><span class="btn__t">Escribir por WhatsApp <svg class="wai" aria-hidden="true"><use href="#i-wa"></use></svg></span>
+        </a>
+        <a class="btn btn--line" href="tel:+541123029911"><span class="btn__f"></span><span class="btn__t">Llamar</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="ft__brand">
+    <span class="brand__w">Estudio Jurídico 911</span>
+    <span class="brand__k">Abogados en CABA y GBA</span>
+  </div>
+  <nav class="ft__nav" aria-label="Secciones">
+    <a href="#estudio">Nuestro Estudio</a><span class="ft__sep"></span>
+    <a href="#nosotros">Nosotros</a><span class="ft__sep"></span>
+    <a href="#familia">Derecho de Familia</a><span class="ft__sep"></span>
+    <a href="#laboral">Derecho Laboral</a><span class="ft__sep"></span>
+    <a href="#transito">Accidentes de Tránsito</a><span class="ft__sep"></span>
+    <a href="#faq">Preguntas Frecuentes</a><span class="ft__sep"></span>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <div class="ft__data">
+    <div class="ft__d"><h3>WhatsApp</h3><p><a href="https://wa.me/5491123029911" target="_blank" rel="noopener">11-2302-9911</a></p></div>
+    <div class="ft__d"><h3>Teléfono</h3><p><a href="tel:+541123029911">11-2302-9911</a> · <a href="tel:+541164560884">11-6456-0884</a></p></div>
+    <div class="ft__d"><h3>Email</h3><p><a href="mailto:estudiojuridico911@gmail.com">estudiojuridico911@gmail.com</a></p></div>
+    <div class="ft__d"><h3>Zona de atención</h3><p>CABA y Provincia de Buenos Aires</p></div>
+  </div>
+  <div class="ft__giant"><span class="fg">911</span></div>
+  <div class="ft__legal">
+    <span>© 2026 Estudio Jurídico 911 — Todos los derechos reservados</span>
+  </div>
+</footer>
+
+<script src="js/image-slot.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
